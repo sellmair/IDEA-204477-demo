@@ -1,0 +1,26 @@
+buildscript {
+  apply from: "$rootDir/gradle/dependencies.gradle"
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath deps.plugins.android
+    classpath deps.plugins.kotlin
+  }
+}
+
+allprojects {
+  repositories {
+    maven { url "https://dl.bintray.com/sellmair/sellmair" }
+    maven { url 'https://plugins.gradle.org/m2/' }
+    maven { url 'https://dl.bintray.com/jetbrains/kotlin-native-dependencies' }
+    google()
+    jcenter()
+    mavenLocal()
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}

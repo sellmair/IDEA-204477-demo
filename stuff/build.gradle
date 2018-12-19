@@ -1,0 +1,35 @@
+plugins {
+  id 'kotlin-multiplatform'
+}
+
+
+// TODO work around for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+  compileClasspath
+}
+
+kotlin {
+
+  targets {
+    final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")    \
+                                 ? presets.iosArm64 : presets.iosX64
+
+    fromPreset(iosTarget, 'ios') {
+      compilations.main.outputKinds('FRAMEWORK')
+    }
+
+    fromPreset(presets.jvm, 'jvm')
+  }
+
+  sourceSets {
+    commonMain {
+      dependencies {
+        implementation deps.kotlin.stdlib.common
+        implementation deps.coroutines.common
+        api project(':model')
+      }
+    }
+    commonTest {
+    }
+  }
+}

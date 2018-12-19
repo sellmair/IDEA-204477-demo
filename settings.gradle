@@ -1,0 +1,5 @@
+include ':app'
+include ':model'
+include ':stuff'
+
+enableFeaturePreview('GRADLE_METADATA')
