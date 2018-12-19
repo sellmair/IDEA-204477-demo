@@ -30,12 +30,8 @@ dependencies {
 
   implementation deps.kodein
   implementation deps.material
-  implementation deps.quantum
   implementation deps.coroutines.jvm
   implementation deps.coroutines.android
 
-  //implementation project(':common')
-  //implementation project(':common-ui')
   implementation project(':stuff')
-  //implementation project(':login-ui')
 }
